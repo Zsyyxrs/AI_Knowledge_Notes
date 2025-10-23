@@ -162,16 +162,17 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "README.md.md",
+                "file": "README.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "README.md 的大纲"
+              "title": "README 的大纲"
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
@@ -186,13 +187,15 @@
       "templates:插入模板": false,
       "command-palette:打开命令面板": false,
       "bases:创建新数据库": false,
-      "obsidian-git:Open Git source control": false
+      "obsidian-git:Open Git source control": false,
+      "workspaces:管理工作区布局": false
     }
   },
-  "active": "edd40f1e97092a3c",
+  "active": "1647c0338dc27f3a",
   "lastOpenFiles": [
     "demo.md",
     "README.md",
+    "笔记C.md",
     "1-Projects/1-pro",
     "2-Knowledge",
     "3-Papers",
