@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
+                "file": "5-template/模板.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "模板"
             }
           }
         ]
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "README.md",
+                "file": "5-template/模板.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "README 的反向链接列表"
+              "title": "模板 的反向链接列表"
             }
           },
           {
@@ -142,13 +142,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "README.md",
+                "file": "5-template/模板.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "README 的大纲"
+              "title": "模板 的大纲"
             }
           },
           {
@@ -183,11 +183,16 @@
   },
   "active": "687608e6bd5df779",
   "lastOpenFiles": [
-    "demo.md",
-    "README.md",
-    "未命名.base",
+    "1-Projects/1-医疗大模型项目.md",
+    "5-template/模板.md",
+    "5-template",
     "笔记C.md",
-    "1-Projects/1-pro",
+    "未命名.md",
+    "未命名 1.md",
+    "README.md",
+    "demo.md",
+    "未命名.base",
+    "1-Projects/1-医疗大模型项目",
     "2-Knowledge",
     "3-Papers",
     "1-Projects",
