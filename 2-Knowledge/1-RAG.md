@@ -28,3 +28,7 @@ text-embedding-ada-002 openAI的闭源模型
 4. 训练双塔式模型，让正例间的距离小，负例间的距离大
 
 ![](https://cdn.jsdelivr.net/gh/Zsyyxrs/picgo-images/img/sbert.png)
+
+
+测试图片
+![image.png](https://cdn.jsdelivr.net/gh/Zsyyxrs/picgo-images/img/20251027225616935.png)
