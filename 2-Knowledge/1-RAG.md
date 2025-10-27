@@ -1,6 +1,8 @@
 
 RAG（Retrieval Augmented Generation）顾名思义，通过**检索**的方法来增强**生成模型**的能力。
 
+![](https://cdn.jsdelivr.net/gh/Zsyyxrs/picgo-images/img/rag.png)
+
 pdfminer.six或者pdfplumber解析pdf提取文字等
 
 不同环境下可以放不同的 .env 文件：
@@ -24,3 +26,5 @@ text-embedding-ada-002 openAI的闭源模型
 文本向量训练：
 3. 构建相关（正例）与不相关（负例）的句子对样本
 4. 训练双塔式模型，让正例间的距离小，负例间的距离大
+
+![](https://cdn.jsdelivr.net/gh/Zsyyxrs/picgo-images/img/sbert.png)
