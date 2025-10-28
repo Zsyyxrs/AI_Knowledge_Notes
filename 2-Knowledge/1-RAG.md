@@ -1,4 +1,4 @@
-
+# 一、简介
 RAG（Retrieval Augmented Generation）顾名思义，通过**检索**的方法来增强**生成模型**的能力。
 搭建过程：
 1. 文档加载，并按一定条件切分成文本块
@@ -8,17 +8,24 @@ RAG（Retrieval Augmented Generation）顾名思义，通过**检索**的方法�
 
 ![](https://cdn.jsdelivr.net/gh/Zsyyxrs/picgo-images/img/rag.png)
 
+# 二、文本切分
 pdfminer.six或者pdfplumber解析pdf提取文字等
+普通文本切割：\n 等基于一定规则切分
+复杂文本：NSP任务进行微调训练
+
+
 
 不同环境下可以放不同的 .env 文件：
 .env.dev
 .env.prod
 load_dotenv(".env.dev")
 find_dotenv()在当前路径和父路径找，返回完整路径
-
 不要上传 .env 到 GitHub ，在 .gitignore 中加一行 .env
 
-嵌入模型怎么拆分、训练的
+
+
+# 三、嵌入模型
+嵌入模型怎么拆分、训练的 
 找项目相关的语料库用LLM进行评估
 text-embedding-ada-002 openAI的闭源模型
 大多数开源的需要微调
@@ -34,6 +41,9 @@ text-embedding-ada-002 openAI的闭源模型
 2. 训练双塔式模型，让正例间的距离小，负例间的距离大
 [比较语句相似度的SBERT](https://www.sbert.net/)
 ![](https://cdn.jsdelivr.net/gh/Zsyyxrs/picgo-images/img/sbert.png)
+检索后重排序
+
+
 
 
 测试图片
