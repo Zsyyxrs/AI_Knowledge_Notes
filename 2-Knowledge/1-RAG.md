@@ -8,8 +8,18 @@ RAG（Retrieval Augmented Generation）顾名思义，通过**检索**的方法�
 
 ![](https://cdn.jsdelivr.net/gh/Zsyyxrs/picgo-images/img/rag.png)
 
+离线步骤：
+1. 文档加载
+2. 文档拆分
+3. 向量化
+4. 灌入向量数据库
+## 在线步骤：
+1. 获得用户问题
+2. 
+
 # 二、文本切分
 pdfminer.six或者pdfplumber解析pdf提取文字等
+RAGflow：
 普通文本切割：\n 等基于一定规则切分
 复杂文本：NSP任务进行微调训练
 
@@ -29,6 +39,8 @@ find_dotenv()在当前路径和父路径找，返回完整路径
 找项目相关的语料库用LLM进行评估
 text-embedding-ada-002 openAI的闭源模型
 大多数开源的需要微调
+
+向量嵌入：向量、原文、id的形式写入，列表形式全文dang写入
 
 向量检索
 
