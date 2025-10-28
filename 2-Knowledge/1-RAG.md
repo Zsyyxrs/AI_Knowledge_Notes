@@ -32,3 +32,6 @@ text-embedding-ada-002 openAI的闭源模型
 
 测试图片
 ![image.png](https://cdn.jsdelivr.net/gh/Zsyyxrs/picgo-images/img/20251027225616935.png)
+
+向量相似度衡量指标
+![](https://cdn.jsdelivr.net/gh/Zsyyxrs/picgo-images/img/sim.png)
