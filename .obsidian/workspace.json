@@ -4,17 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "fd7635dbf3933c81",
+        "id": "3a11eb00dc8b4e27",
         "type": "tabs",
         "children": [
           {
-            "id": "d8a70b1559c10bbe",
+            "id": "678635a3332dcd04",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
                 "file": "2-Knowledge/1-RAG.md",
-                "mode": "preview",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
@@ -172,7 +172,7 @@
             }
           }
         ],
-        "currentTab": 5
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
@@ -192,7 +192,7 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "d8a70b1559c10bbe",
+  "active": "678635a3332dcd04",
   "lastOpenFiles": [
     "2-Knowledge/1-RAG.md",
     "1-Projects/1-医疗大模型项目.md",

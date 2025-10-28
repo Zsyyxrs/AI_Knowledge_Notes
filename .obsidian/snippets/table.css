@@ -2,4 +2,8 @@
   display: block;
   overflow-x: auto;
   white-space: nowrap;
+  font-size: 8px;
+}
+.markdown-source-view.mod-cm6 table {
+  font-size: 24px;
 }

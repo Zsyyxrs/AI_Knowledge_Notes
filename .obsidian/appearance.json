@@ -3,6 +3,7 @@
   "theme": "moonstone",
   "accentColor": "",
   "enabledCssSnippets": [
-    "scrollable-tables"
+    "scrollable-tables",
+    "table"
   ]
 }
