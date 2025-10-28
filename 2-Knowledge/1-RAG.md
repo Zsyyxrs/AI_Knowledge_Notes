@@ -23,7 +23,8 @@ RAGflow：
 普通文本切割：\n 等基于一定规则切分
 复杂文本：NSP任务进行微调训练
 
-
+文本切分的**chunk_size**对于 大多数文档问答型 RAG：推荐区间：chunk_size = 500 ~ 1000 tokens，如果用字符计（英文）约为 2000 ~ 4000 chars
+**overlap_size**通常设为 chunk_size 的 **10% ~ 20%**， 如果文档段落很长或句子之间语义依赖强（如故事、法规条款），可以适当增大到 **25% ~ 30%**。 如果是 FAQ、独立条目，可以降低到 **0~50 tokens**。
 
 不同环境下可以放不同的 .env 文件：
 .env.dev
@@ -31,8 +32,6 @@ RAGflow：
 load_dotenv(".env.dev")
 find_dotenv()在当前路径和父路径找，返回完整路径
 不要上传 .env 到 GitHub ，在 .gitignore 中加一行 .env
-
-
 
 # 三、文本嵌入和检索
 构建向量数据库：选择合适的向量数据库如chromadb、milvus等
@@ -87,6 +86,7 @@ find_dotenv()在当前路径和父路径找，返回完整路径
 - B+ 树 或 Segment Tree 用于范围字段（如年龄、时间）
 - 位图索引 用于布尔字段（如是否活跃）
 
+[可变长度embedding](https://arxiv.org/abs/2205.13147)
 
 嵌入模型怎么拆分、训练的 
 找项目相关的语料库用LLM进行评估
@@ -120,3 +120,4 @@ find_dotenv()在当前路径和父路径找，返回完整路径
 向量数据库chroma :不指定embedding模型时用默认的sbert的all-MiniLM-L6-v2，384维
 [比较语句相似度的SBERT](https://www.sbert.net/)
 
+检索后重排序（rerank）
