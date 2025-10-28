@@ -28,14 +28,11 @@ text-embedding-ada-002 openAI的闭源模型
 文本向量
 1. 将文本转成一组*N*维浮点数，即**文本向量**又叫 Embeddings
 2. 向量之间可以计算距离，距离远近对应**语义相似度**大小
-文本向量训练：
 
-3. 构建相关（正例）与不相关（负例）的句子对样本
-4. 训练双塔式模型，让正例间的距离小，负例间的距离大
-https://www.sbert.net/
-
-
-[比较语句xiang'sSBERT](https://www.sbert.net/)
+文本向量训练
+1. 构建相关（正例）与不相关（负例）的句子对样本
+2. 训练双塔式模型，让正例间的距离小，负例间的距离大
+[比较语句相似度的SBERT](https://www.sbert.net/)
 ![](https://cdn.jsdelivr.net/gh/Zsyyxrs/picgo-images/img/sbert.png)
 
 
