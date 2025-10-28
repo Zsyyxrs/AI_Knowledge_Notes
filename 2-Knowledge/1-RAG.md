@@ -1,5 +1,10 @@
 
 RAG（Retrieval Augmented Generation）顾名思义，通过**检索**的方法来增强**生成模型**的能力。
+搭建过程：
+1. 文档加载，并按一定条件切分成文本块
+2. 通过embedding模型转换成向量
+3. 在向量数据库里根据向量相似度检索得到最高的几组答案
+4. 通过query和answer构建prompt给大模型最终得到回复
 
 ![](https://cdn.jsdelivr.net/gh/Zsyyxrs/picgo-images/img/rag.png)
 
@@ -24,9 +29,13 @@ text-embedding-ada-002 openAI的闭源模型
 1. 将文本转成一组*N*维浮点数，即**文本向量**又叫 Embeddings
 2. 向量之间可以计算距离，距离远近对应**语义相似度**大小
 文本向量训练：
+
 3. 构建相关（正例）与不相关（负例）的句子对样本
 4. 训练双塔式模型，让正例间的距离小，负例间的距离大
+https://www.sbert.net/
 
+
+[比较语句xiang'sSBERT](https://www.sbert.net/)
 ![](https://cdn.jsdelivr.net/gh/Zsyyxrs/picgo-images/img/sbert.png)
 
 
@@ -35,3 +44,6 @@ text-embedding-ada-002 openAI的闭源模型
 
 向量相似度衡量指标
 ![](https://cdn.jsdelivr.net/gh/Zsyyxrs/picgo-images/img/sim.png)
+
+
+向量数据库chroma :不指定embedding模型时用默认的 
