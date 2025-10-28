@@ -1,5 +1,8 @@
 {
   "cssTheme": "Things",
   "theme": "moonstone",
-  "accentColor": ""
+  "accentColor": "",
+  "enabledCssSnippets": [
+    "scrollable-tables"
+  ]
 }
