@@ -54,7 +54,7 @@ find_dotenv()在当前路径和父路径找，返回完整路径
 | GTE‑Large 系列（General Text Embeddings） | 开源研究          | ~ 1024 维（Large 版本）    | 多语言                     | 参数相对适中；可细分版本；适合微调 | 社区／工具链可能不如大厂成熟   | 自定义领域检索／中小团队部署     |
 | jina‑embeddings‑v3                    | Jina AI（开源）   | 默认 ~ 1024 维（支持降维）     | 多语言／长上下文（如 8192 tokens） | 支持长文本；可调整维度；开源灵活  | 较新，生态较少历史积累      | 长文档检索／多语言／本地化部署    |
 | Cohere Embed v3                       | Cohere 商用 API | 支持大上下文（如 8 k tokens）  | 多语言                     | 专注长文档检索；API 方便使用  | 商用成本；开发依赖第三方     | 文档检索／知识库系统／企业服务    |
-
+> 所有嵌入模型都在高维空间中用类似的余弦相似度度量语义接近性；真正的区别在于模型如何构建这个空间（embedding 维度、训练目标、语言范围等）。
 
 
 
@@ -73,7 +73,7 @@ find_dotenv()在当前路径和父路径找，返回完整路径
 文本向量训练
 1. 构建相关（正例）与不相关（负例）的句子对样本
 2. 训练双塔式模型，让正例间的距离小，负例间的距离大
-[比较语句相似度的SBERT](https://www.sbert.net/)
+
 ![](https://cdn.jsdelivr.net/gh/Zsyyxrs/picgo-images/img/sbert.png)
 检索后重排序
 
@@ -87,4 +87,6 @@ find_dotenv()在当前路径和父路径找，返回完整路径
 ![](https://cdn.jsdelivr.net/gh/Zsyyxrs/picgo-images/img/sim.png)
 
 
-向量数据库chroma :不指定embedding模型时用默认的 
+向量数据库chroma :不指定embedding模型时用默认的sbert的all-MiniLM-L6-v2，384维
+[比较语句相似度的SBERT](https://www.sbert.net/)
+
