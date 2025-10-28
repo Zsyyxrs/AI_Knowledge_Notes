@@ -1,9 +1,24 @@
-.markdown-preview-view table {
-  display: block;
-  overflow-x: auto;
-  white-space: nowrap;
-  font-size: 8px;
+/* === 阅读模式下的表格字体缩小样式 === */
+/* 缩小整体表格字体与间距 */
+.markdown-preview-view table,
+.markdown-preview-view td,
+.markdown-preview-view th {
+  font-size: 12px !important;    /* 修改表格字体大小 */
+  line-height: 1.5 !important;   /* 行距稍紧 */
+  padding: 6px 8px !important;   /* 缩小单元格内边距 */
 }
-.markdown-source-view.mod-cm6 table {
-  font-size: 24px;
+
+.markdown-preview-view table {
+  border-collapse: collapse !important;
+  border-spacing: 0;
+}
+
+/* 可选：让单元格之间有浅灰边框 */
+.markdown-preview-view td,
+.markdown-preview-view th {
+  border: 1px solid var(--background-modifier-border, #ddd) !important;
+}
+/* 条纹行效果（可选） */
+.markdown-preview-view tr:nth-child(even) td {
+  background-color: var(--background-secondary, #fafafa);
 }

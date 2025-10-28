@@ -14,7 +14,7 @@
               "type": "markdown",
               "state": {
                 "file": "2-Knowledge/1-RAG.md",
-                "mode": "source",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
@@ -172,7 +172,7 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 5
       }
     ],
     "direction": "horizontal",
