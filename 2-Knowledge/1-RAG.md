@@ -8,14 +8,18 @@ RAG（Retrieval Augmented Generation）顾名思义，通过**检索**的方法�
 
 ![](https://cdn.jsdelivr.net/gh/Zsyyxrs/picgo-images/img/rag.png)
 
-离线步骤：
+**离线步骤：**
 1. 文档加载
 2. 文档拆分
 3. 向量化
 4. 灌入向量数据库
-## 在线步骤：
+
+ **在线步骤：**
 1. 获得用户问题
-2. 
+2. 用户问题向量化
+3. 在向量数据库里检索得到最相似的top_n
+4. 用rerank模型重排序
+5. 返回并结合query构建prompt并输入大模型得到结果
 
 # 二、文本切分
 pdfminer.six或者pdfplumber解析pdf提取文字等
@@ -33,7 +37,25 @@ load_dotenv(".env.dev")
 find_dotenv()在当前路径和父路径找，返回完整路径
 不要上传 .env 到 GitHub ，在 .gitignore 中加一行 .env
 
-# 三、文本嵌入和检索
+# 三、文本嵌入与检索
+找项目相关的语料库用LLM进行评估
+大多数开源的嵌入模型需要微调
+
+向量嵌入：向量、原文、id的形式写入，列表形式全文档写入
+向量检索：向量、top_n，也是列表形式
+
+**文本向量**
+1. 将文本转成一组*N*维浮点数，即**文本向量**又叫 Embeddings
+2. 向量之间可以计算距离，距离远近对应**语义相似度**大小
+向量相似度衡量指标
+![](https://cdn.jsdelivr.net/gh/Zsyyxrs/picgo-images/img/sim.png)
+
+**文本向量训练**
+1. 构建相关（正例）与不相关（负例）的句子对样本
+2. 训练双塔式模型，让正例间的距离小，负例间的距离大
+
+![](https://cdn.jsdelivr.net/gh/Zsyyxrs/picgo-images/img/sbert.png)
+
 构建向量数据库：选择合适的向量数据库如chromadb、milvus等
 
 | 名称           | 特点                          | 是否开源 | 推荐场景          | 索引支持更新？  | 更新速度  | 索引更新机制                      | 备注          |
@@ -79,45 +101,29 @@ find_dotenv()在当前路径和父路径找，返回完整路径
 | **HNSW（图索引）**    | 构造一个多层图（高层稀疏、底层密集），每个向量是图中的节点，搜索时像在地图上“导航”一样快速逼近目标       | 支持高性能 ANN，Qdrant/Milvus，速度超快，精度高，内存高，构建时间慢，不需要训练 | 实时检索，支持动态增删 |
 | **PQ（乘积量化）/OPQ** | 有损压缩，把高维向量拆成多个子向量，对每个子向量用 KMeans 建立查找表，每个向量最终只用多个「子索引」表示 | 压缩向量减少内存占用，快，精度中，内存低                             | 大规模，不支持插入   |
 | **DiskANN**      |                                                          | 存储在磁盘中                                           | 海量数据（数亿级）   |
-元数据索引
+向量数据库chroma :不指定embedding模型时用默认的sbert的all-MiniLM-L6-v2，384维
+[比较语句相似度的SBERT](https://www.sbert.net/)
+对于文本嵌入模型可以指定维度：[可变长度embedding](https://arxiv.org/abs/2205.13147)
+**元数据索引**
 不参与向量相似度计算，过滤数据，用来实现更复杂的查询逻辑
 对于元数据，底层可能用：
 - 倒排索引（Inverted Index）用于分类字段（如性别、标签）
 - B+ 树 或 Segment Tree 用于范围字段（如年龄、时间）
 - 位图索引 用于布尔字段（如是否活跃）
+**检索后重排序**
 
-[可变长度embedding](https://arxiv.org/abs/2205.13147)
-
-嵌入模型怎么拆分、训练的 
-找项目相关的语料库用LLM进行评估
-
-大多数开源的需要微调
-
-向量嵌入：向量、原文、id的形式写入，列表形式全文档写入
-向量检索：向量、top_n，也是列表形式
-
-文本向量
-1. 将文本转成一组*N*维浮点数，即**文本向量**又叫 Embeddings
-2. 向量之间可以计算距离，距离远近对应**语义相似度**大小
-
-文本向量训练
-1. 构建相关（正例）与不相关（负例）的句子对样本
-2. 训练双塔式模型，让正例间的距离小，负例间的距离大
-
-![](https://cdn.jsdelivr.net/gh/Zsyyxrs/picgo-images/img/sbert.png)
-检索后重排序
+![](https://cdn.jsdelivr.net/gh/Zsyyxrs/picgo-images/img/sbert-rerank.png)
 
 
 
+
+
+
+
+
+
+
+检索后重排序（rerank）
 
 测试图片
 ![image.png](https://cdn.jsdelivr.net/gh/Zsyyxrs/picgo-images/img/20251027225616935.png)
-
-向量相似度衡量指标
-![](https://cdn.jsdelivr.net/gh/Zsyyxrs/picgo-images/img/sim.png)
-
-
-向量数据库chroma :不指定embedding模型时用默认的sbert的all-MiniLM-L6-v2，384维
-[比较语句相似度的SBERT](https://www.sbert.net/)
-
-检索后重排序（rerank）
