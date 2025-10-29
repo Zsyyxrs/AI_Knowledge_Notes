@@ -104,15 +104,20 @@ find_dotenv()在当前路径和父路径找，返回完整路径
 | **DiskANN**      |                                                          | 存储在磁盘中                                           | 海量数据（数亿级）   |
 
 向量数据库chroma :不指定embedding模型时用默认的sbert的all-MiniLM-L6-v2，384维
+
 [比较语句相似度的SBERT](https://www.sbert.net/)
+
 对于文本嵌入模型可以指定维度：[可变长度embedding](https://arxiv.org/abs/2205.13147)
+
 [向量数据库及索引介绍](https://guangzhengli.com/blog/zh/vector-database)
-**元数据索引**
+
+**元数据索引** 
 不参与向量相似度计算，过滤数据，用来实现更复杂的查询逻辑
 对于元数据，底层可能用：
 - 倒排索引（Inverted Index）用于分类字段（如性别、标签）
 - B+ 树 或 Segment Tree 用于范围字段（如年龄、时间）
 - 位图索引 用于布尔字段（如是否活跃）
+
 **检索后重排序（rerank）**
 
 ![](https://cdn.jsdelivr.net/gh/Zsyyxrs/picgo-images/img/sbert-rerank.png)
@@ -123,6 +128,7 @@ Bi-Encoder模型：每个文本都被单独编码成一个向量（embedding）�
 - **适合召回阶段**：用于快速筛选相关候选文档。
 - **语义交互弱**：query 和 document 独立编码，模型无法充分捕捉二者之间的细粒度关系；
 - 在**复杂问答或长文本匹配**任务中，准确率不如交叉编码模型。
+
 CrossEncoder模型：直接把 query 和 document 拼接在一起，让模型“同时阅读”两者，进行关联判断。
 - **语义交互强**：模型能直接关注 query 与 doc 的词级关系；
 - **效果更准**：更适合重排序（reranking）或高精度匹配；
@@ -136,7 +142,8 @@ CrossEncoder模型：直接把 query 和 document 拼接在一起，让模型“
 | **cross-encoder/ms-marco-MiniLM-L-12-v2** | SBERT        | 英文高精度                        | 英文语义检索        |
 | **bge-reranker-v2-m3**                    | 智源研究院        | 新一代模型，效果更好                   | 多语言高精度 RAG    |
 | **monot5** / **monoT5**                   | Google T5 系列 | 生成式 reranker（输出“true/false”） | 高性能场景（需 GPU）  |
- 一些 Rerank 的 API 服务：
+
+ 一些 rerank 的 API 服务：
 - [Cohere Rerank](https://cohere.com/rerank)：支持多语言
 - [Jina Rerank](https://jina.ai/reranker/)：目前只支持英文
 原理：Reciprocal Rank Fusion （RRF）算法
