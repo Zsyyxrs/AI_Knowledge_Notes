@@ -22,6 +22,7 @@
 - PromptTemplate 可以在模板中自定义变量
 - ChatPromptTemplate 用模板表示的对话上下文
 - MessagesPlaceholder 把多轮对话变成模板
+- outparser类将输出解析成特定格式
 
 # 三、数据连接封装
 
