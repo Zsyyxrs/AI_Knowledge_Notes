@@ -20,7 +20,6 @@ RAG（Retrieval Augmented Generation）顾名思义，通过**检索**的方法�
 3. 在向量数据库里检索（召回阶段）得到最相似的top_n（候选文档）
 4. 用rerank模型重排序
 5. 返回并结合query构建prompt并输入大模型得到结果
-
 # 二、文本切分
 pdfminer.six或者pdfplumber解析pdf提取文字等
 RAGflow：
@@ -29,6 +28,7 @@ RAGflow：
 
 文本切分的**chunk_size**对于 大多数文档问答型 RAG：推荐区间：chunk_size = 500 ~ 1000 tokens，如果用字符计（英文）约为 2000 ~ 4000 chars
 **overlap_size**通常设为 chunk_size 的 **10% ~ 20%**， 如果文档段落很长或句子之间语义依赖强（如故事、法规条款），可以适当增大到 **25% ~ 30%**。 如果是 FAQ、独立条目，可以降低到 **0~50 tokens**。
+对于pdf中表格的处理：通常采用转图片的形式，再用专门的目标检测模型找出图片中的表格区域专为图像。最后可通过多模态模型输入图片和文本作答
 
 不同环境下可以放不同的 .env 文件：
 .env.dev
@@ -36,7 +36,6 @@ RAGflow：
 load_dotenv(".env.dev")
 find_dotenv()在当前路径和父路径找，返回完整路径
 不要上传 .env 到 GitHub ，在 .gitignore 中加一行 .env
-
 # 三、文本嵌入与检索
 找项目相关的语料库用LLM进行评估
 大多数开源的嵌入模型需要微调
@@ -138,6 +137,4 @@ CrossEncoder模型：直接把 query 和 document 拼接在一起，让模型“
 - [Cohere Rerank](https://cohere.com/rerank)：支持多语言
 - [Jina Rerank](https://jina.ai/reranker/)：目前只支持英文
 
-
-测试图片
-![image.png](https://cdn.jsdelivr.net/gh/Zsyyxrs/picgo-images/img/20251027225616935.png)
+图片可以转文本再进行向量存储
