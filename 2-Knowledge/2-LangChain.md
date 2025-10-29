@@ -8,7 +8,7 @@
 - PromptTemple：提示词模板
 - OutputParser：解析输出
 
-接口位置
+**接口位置**
 
 | 原来的路径                 | 现在的位置                                              | 说明                           |
 | --------------------- | -------------------------------------------------- | ---------------------------- |
@@ -17,9 +17,11 @@
 | langchain.llms        | langchain_openai / langchain_anthropic 等           | 各厂商独立子包                      |
 | langchain.prompts     | langchain_core.prompts                             | Prompt 模型化部分                 |
 
-对模型和多轮对话的接口封装
 ![](https://cdn.jsdelivr.net/gh/Zsyyxrs/picgo-images/img/model_io.jpg)
 
+- PromptTemplate 可以在模板中自定义变量
+- ChatPromptTemplate 用模板表示的对话上下文
+- MessagesPlaceholder 把多轮对话变成模板
 
 # 三、数据连接封装
 
