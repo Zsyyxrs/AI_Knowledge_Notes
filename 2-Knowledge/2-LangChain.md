@@ -1,1 +1,2 @@
 **LangChain** 是一个开源框架，专门用于**构建基于大语言模型（LLM）的应用程序**。它把「大模型」和「外部世界」连接起来，让开发者能更轻松地实现像 ChatGPT、RAG（检索增强生成）、智能体（Agent）等复杂功能。
+[LangChain官网](https://www.langchain.com/)

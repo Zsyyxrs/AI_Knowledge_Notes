@@ -65,6 +65,7 @@ find_dotenv()在当前路径和父路径找，返回完整路径
 | **Qdrant**   | 支持 payload，Python 接口友好      | ✅    | 多模态向量 + 元信息检索 | ✅        | 中等    | HNSW 支持增删改，但需维护结构           | 自动同步更新索引    |
 | **Pinecone** | 云服务为主，自动分布式扩展               | ❌    | SaaS 快速构建原型   | ✅        | 商业级优化 | 自有索引机制                      | SaaS，隐藏内部细节 |
 | **Chroma**   | 轻量本地，LangChain 默认集成         | ✅    | 小项目 / 测试      | ✅（有限支持）  | 较快    | 简单内存索引或 SQLite 持久化          | 适合个人项目或原型验证 |
+
 选择合适的embedding（文本嵌入）模型：
 
 | 模型                           | 开发/提供方                   | 向量维度      | 语言支持      | 特点                           | 局限               | 推荐场景                |
@@ -89,6 +90,7 @@ find_dotenv()在当前路径和父路径找，返回完整路径
 | 🀄️ **中文优化任务**            | GTE-Large (Qwen2)                    | 语义理解更贴近中文，中文文档召回效果更好            |
 | 📚 **超长文档检索（>8k tokens）** | jina-embeddings-v3 或 Cohere Embed v3 | 支持长上下文嵌入                        |
 | 🧪 **快速实验 / 原型验证**        | all-MiniLM-L6-v2                     | 模型轻、推理快、资源占用小，Chroma 可直接调用      |
+
 向量数据库里的索引
 
 | 索引方式             | 形式                                                       | 特点                                               | 适合          |
@@ -100,6 +102,7 @@ find_dotenv()在当前路径和父路径找，返回完整路径
 | **HNSW（图索引）**    | 构造一个多层图（高层稀疏、底层密集），每个向量是图中的节点，搜索时像在地图上“导航”一样快速逼近目标       | 支持高性能 ANN，Qdrant/Milvus，速度超快，精度高，内存高，构建时间慢，不需要训练 | 实时检索，支持动态增删 |
 | **PQ（乘积量化）/OPQ** | 有损压缩，把高维向量拆成多个子向量，对每个子向量用 KMeans 建立查找表，每个向量最终只用多个「子索引」表示 | 压缩向量减少内存占用，快，精度中，内存低                             | 大规模，不支持插入   |
 | **DiskANN**      |                                                          | 存储在磁盘中                                           | 海量数据（数亿级）   |
+
 向量数据库chroma :不指定embedding模型时用默认的sbert的all-MiniLM-L6-v2，384维
 [比较语句相似度的SBERT](https://www.sbert.net/)
 对于文本嵌入模型可以指定维度：[可变长度embedding](https://arxiv.org/abs/2205.13147)
@@ -136,5 +139,7 @@ CrossEncoder模型：直接把 query 和 document 拼接在一起，让模型“
  一些 Rerank 的 API 服务：
 - [Cohere Rerank](https://cohere.com/rerank)：支持多语言
 - [Jina Rerank](https://jina.ai/reranker/)：目前只支持英文
+原理：Reciprocal Rank Fusion （RRF）算法
+
 
 图片可以转文本再进行向量存储

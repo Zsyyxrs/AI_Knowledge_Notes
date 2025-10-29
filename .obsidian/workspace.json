@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2-Knowledge/2-LangChain.md",
+                "file": "2-Knowledge/1-RAG.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2-LangChain"
+              "title": "1-RAG"
             }
           }
         ]
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2-Knowledge/2-LangChain.md",
+                "file": "2-Knowledge/1-RAG.md",
                 "collapseAll": true,
                 "extraContext": true,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "2-LangChain 的反向链接列表"
+              "title": "1-RAG 的反向链接列表"
             }
           },
           {
@@ -142,13 +142,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2-Knowledge/2-LangChain.md",
+                "file": "2-Knowledge/1-RAG.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "2-LangChain 的大纲"
+              "title": "1-RAG 的大纲"
             }
           },
           {
@@ -194,8 +194,8 @@
   },
   "active": "678635a3332dcd04",
   "lastOpenFiles": [
-    "2-Knowledge/1-RAG.md",
     "2-Knowledge/2-LangChain.md",
+    "2-Knowledge/1-RAG.md",
     "1-Projects/1-医疗大模型项目.md",
     "5-template/项目模板.md",
     "未命名.md",
