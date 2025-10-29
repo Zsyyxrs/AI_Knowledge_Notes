@@ -22,10 +22,13 @@
 - PromptTemplate 可以在模板中自定义变量
 - ChatPromptTemplate 用模板表示的对话上下文
 - MessagesPlaceholder 把多轮对话变成模板
-- outparser类将输出解析成特定格式
+- outparser类将大模型的输出解析成结构化对象
+- LangChain 提供了 Function Calling 的封装
 
 # 三、数据连接封装
-
+1. PyMuPDFLoader加载文档
+2. RecursiveCharacterTextSplitter用于文本处理
+3. vectorstores选取合适的向量数据库
 
 # 四、对话历史管理
 
