@@ -8,6 +8,18 @@
 - PromptTemple：提示词模板
 - OutputParser：解析输出
 
+接口位置
+
+| 原来的路径                 | 现在的位置                                              | 说明                           |
+| --------------------- | -------------------------------------------------- | ---------------------------- |
+| langchain.schema      | langchain_core.messages                            | 消息结构（AI/Human/SystemMessage） |
+| langchain.chat_models | langchain_openai 或 langchain_community.chat_models | 模型实现部分分离                     |
+| langchain.llms        | langchain_openai / langchain_anthropic 等           | 各厂商独立子包                      |
+| langchain.prompts     | langchain_core.prompts                             | Prompt 模型化部分                 |
+
+对模型和多轮对话的接口封装
+![](https://cdn.jsdelivr.net/gh/Zsyyxrs/picgo-images/img/model_io.jpg)
+
 
 # 三、数据连接封装
 
