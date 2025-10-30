@@ -31,6 +31,16 @@
 3. vectorstores选取合适的向量数据库
 
 # 四、对话历史管理
-
+1. trim_messages裁剪消息
+			'''python
+			trim_messages(
+			    messages,
+			    max_tokens=45,
+			    strategy="last",
+			    token_counter=ChatOpenAI(model="gpt-4o-mini"),
+			    include_system=True,
+			    allow_partial=True,
+			)'''
+2. filter_messages过滤消息
 
 # 五、架构封装
