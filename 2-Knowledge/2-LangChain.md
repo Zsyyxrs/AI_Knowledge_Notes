@@ -32,15 +32,38 @@
 
 # 四、对话历史管理
 1. trim_messages裁剪消息
-			'''python
-			trim_messages(
-			    messages,
-			    max_tokens=45,
-			    strategy="last",
-			    token_counter=ChatOpenAI(model="gpt-4o-mini"),
-			    include_system=True,
-			    allow_partial=True,
-			)'''
+```python
+trim_messages(
+	messages,  # 当前对话历史，通常是一个列表
+	max_tokens=45,  # 上限控制参数：最终裁剪后的对话，总token数不能超过 45 个
+	strategy="last",  # 裁剪策略：保留最后的几条消息
+	token_counter=ChatOpenAI(model="gpt-4o-mini"), # token计数器对象
+	include_system=True,  # 是否保留system消息
+	allow_partial=True,  # 是否允许部分消息被截断（即只保留一部分内容）
+)
+```
 2. filter_messages过滤消息
-
+```python
+filter_messages(
+	messages,  # 原始聊天记录，带id(唯一编号) name(可选的发送者标识) role(system/user/assistant) content(消息内容)
+	exclude_names=["example_user", "example_assistant"],  # 排除掉某些特定角色或名字的消息
+	exclude_ids=["3"],  # 手动删除特定id的消息
+)
+```
+3. 存储历史消息到数据库
+```python
+from langchain_community.chat_message_histories import SQLChatMessageHistory
+def get_session_history(session_id):
+    # 通过 session_id 区分对话历史，并存储在 sqlite 数据库中
+    return SQLChatMessageHistory(session_id, "sqlite:///memory.db")
+```
 # 五、架构封装
+LangChain Expression Language（LCEL）是一种声明式语言，可轻松组合不同的调用顺序构成 Chain。
+```python
+# LCEL 表达式
+runnable = (
+{"text": RunnablePassthrough()} | prompt | structured_llm
+)
+# 直接运行
+ret = runnable.invoke("不超过100元的流量大的套餐有哪些")
+```
