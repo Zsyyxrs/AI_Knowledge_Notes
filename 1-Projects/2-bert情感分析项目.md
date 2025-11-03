@@ -5,3 +5,5 @@
 - **type_vocab_size:** 2
 - **vocab_size:** 21128
 - **num_hidden_layers:** 12
+
+huggingface
