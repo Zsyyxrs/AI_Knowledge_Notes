@@ -101,3 +101,18 @@
 - **num_hidden_layers:** 12
 
 huggingface
+
+wandb：默认先不开
+数据集用hf上的
+训练批次可以再调一下
+k折交叉验证：默认先不开
+
+解冻最后两层encoder
+解冻pooler层
+
+用 Xavier 均匀分布（Xavier Uniform）初始化
+
+|**参数类型**|**初始化方法**|**目的**|
+|---|---|---|
+|权重 (weight)|用 Xavier / Kaiming 初始化|保持梯度稳定|
+|偏置 (bias)|用常数（通常是 0）初始化|保持初始对称性、不影响训练稳定性|
