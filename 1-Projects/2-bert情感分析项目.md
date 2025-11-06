@@ -92,6 +92,16 @@
 - 传感器精度与校准问题
 - 系统延迟与能耗优化
 
+问题记录
+
+| 问题表现                                                          | 原因                                                            | 解决方案                                            |
+| ------------------------------------------------------------- | ------------------------------------------------------------- | ----------------------------------------------- |
+| Too Many Requests for url: https://hf-mirror.com/api/datasets | load_dataset() 尝试联网去下载数据集，访问太频繁被限流，即使已经下载过数据集，默认情况下它仍然会去联网校验。 | 设置export HF_HUB_OFFLINE=1，使得在离线模式运行，不会下载新数据集和模型 |
+
+
+
+
+
 [bert模型地址](https://github.com/google-research/bert/blob/master/multilingual.md)
 2 种语言，12 层，768 隐藏单元，12 个注意力头，110M 参数
 
@@ -176,4 +186,5 @@ outputs, loss = self.model.forward(input_ids=..., attention_mask=..., ...)
 | 是否计算梯度    | 是             | 默认是（但常配合 no_grad() 关闭） |
 | 是否影响参数更新  | 是             | 否                      |
 
-
+问题记录
+datasets.load_dataset
