@@ -107,13 +107,16 @@ huggingface
 日志每n个batch记录一次先不开
 train时打印配置信息
 wandb：默认先不开
-k折交叉验证：默认先不开
+k折交叉验证：
+
 做数据处理：文本清洗
 训练集和验证集：用原始的数据集
 test: 1200
 val: 1200
 train: 9600
-训练集数据用了数据增强，数据增强概率0.1
+训练集数据用了数据增强，数据增强（同义词替换）概率0.1
+用tokenizer做编码
+
 创建加权采样器（用于不平衡数据）：根据每个样本权重 = 1 / 类别频率分配采样权重，使得数量少的更容易被采样到
 drop_last ：训练时最后不完整的批次去掉
 pin_memory：DataLoader 会在返回 batch 数据前，**将张量拷贝到固定内存（pinned memory）**，以便 **后续更快地传输到 GPU**。数据驻留在物理内存中，不会被交换出，CUDA 可以直接 DMA（直接内存访问）传输到 GPU
@@ -138,4 +141,10 @@ pin_memory：DataLoader 会在返回 batch 数据前，**将张量拷贝到固�
 
 warm_up：在训练初期逐步增加学习率，从一个较小的值线性或按规则“升温”到目标学习率，从而让模型训练更稳定、收敛更快。
 学习率调度器：采用升温后线性下降的设置，根据设置的WARMUP_RATIO 总步数计算WARMUP步数
-采用混合精度训练：torch.amp.GradScaler()可以混合精度训练时自动缩放梯度
+采用混合精度训练：torch.amp.GradScaler()可以在混合精度训练时自动缩放梯度
+model需要定义好前向传播forward()
+nn.Modoule调用 \_\_call__()：
+1. 检查模块是否在训练/推理模式
+2. 处理 forward hooks（钩子函数）
+3. 调用用户定义的 forward() 函数。
+outputs, loss = self.model.forward(input_ids=..., attention_mask=..., ...)
