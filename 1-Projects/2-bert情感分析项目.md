@@ -187,5 +187,4 @@ outputs, loss = self.model.forward(input_ids=..., attention_mask=..., ...)
 | 是否计算梯度    | 是             | 默认是（但常配合 no_grad() 关闭） |
 | 是否影响参数更新  | 是             | 否                      |
 
-问题记录
-datasets.load_dataset
+跟训练集有很大关系
